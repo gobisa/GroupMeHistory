@@ -8,7 +8,7 @@ Directions:
   
 3. Set the Group ID as an environment variable called GROUPME_GROUP_ID:
 
-   export GROUPME_GROUP_ID=your access token
+   export GROUPME_GROUP_ID=your group id
    
 4. Run the create_db script
 
