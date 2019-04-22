@@ -16,7 +16,7 @@ else:
     print("Image directory created")
 
 # Load DB
-conn = sqlite3.connect('/Users/conor/GroupMeHistory/chat.db')
+conn = sqlite3.connect('chat.db')
 c = conn.cursor()
 
 # Retrieve the URLs that are hosted by groupme
