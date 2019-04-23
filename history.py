@@ -61,22 +61,24 @@ while True:
         if message["attachments"] and message["attachments"][0]["type"] == "image":
             c.execute('''
                       INSERT INTO
-                      messages(message_id, sender_id, text_contents, num_likes, attachment_url)
+                      messages(message_id, sender_id, text_contents, num_likes, created_at, attachment_url)
+                      VALUES(?, ?, ?, ?, ?, ?)
+                      ''',
+                      (message["id"], message["sender_id"],
+                       message["text"],
+                       len(message["favorited_by"]),
+					   message["created_at"],
+                       message["attachments"][0]["url"]))
+        else:
+            c.execute('''
+                      INSERT INTO
+                      messages(message_id, sender_id, text_contents, num_likes, created_at)
                       VALUES(?, ?, ?, ?, ?)
                       ''',
                       (message["id"], message["sender_id"],
                        message["text"],
                        len(message["favorited_by"]),
-                       message["attachments"][0]["url"]))
-        else:
-            c.execute('''
-                      INSERT INTO
-                      messages(message_id, sender_id, text_contents, num_likes)
-                      VALUES(?, ?, ?, ?)
-                      ''',
-                      (message["id"], message["sender_id"],
-                       message["text"],
-                       len(message["favorited_by"])))
+					   message["created_at"]))
 
 conn.commit()
 conn.close()

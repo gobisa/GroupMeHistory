@@ -8,6 +8,7 @@ CREATE TABLE messages(
     sender_id VARCHAR(8) NOT NULL,
     text_contents VARCHAR(1000),
     num_likes INTEGER NOT NULL,
+	created_at INTEGER NOT NULL,
     attachment_url VARCHAR(100) DEFAULT NULL,
     FOREIGN KEY (sender_id) REFERENCES users(sender_id)
 );
