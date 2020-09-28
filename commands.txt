@@ -1,0 +1,8 @@
+# get earliest message
+select * from messages order by created_at ASC limit 1;
+
+# get latest message
+select * from messages order by created_at DESC limit 1;
+
+# get most liked messages
+select text_contents, attachment_url from messages order by num_likes DESC limit 20;
